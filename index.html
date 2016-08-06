@@ -6,15 +6,32 @@
     <script src="thirdjs/jquery.js" type="text/javascript"></script>
     <script src="thirdjs/lodash.js" type="text/javascript"></script>
     <script src="thirdjs/angular.js" type="text/javascript"></script>
+    <script src="js/point.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/canvas.js" type="text/javascript"></script>
     <script src="js/controller.js" type="text/javascript"></script>
   </head>
   <body ng-controller="Controller">
     <h1 class="center">Heading</h1>
+    
+    <input ng-model="text">
+
     <div>
       <img id="keyboard" src="img/keyboard.png" />
       <canvas id="canvas"></canvas>
+    </div>
+
+    <h1>mappings</h1>
+    <div>
+      <table>
+        <tr ng-repeat="mapping in mappings">
+          <td><input ng-model="mapping.key" size="1"></td>
+          <td><input ng-model="mapping.top_left.x" size="3"></td>
+          <td><input ng-model="mapping.top_left.y" size="3"></td>
+          <td><input ng-model="mapping.bot_right.x" size="3"></td>
+          <td><input ng-model="mapping.bot_right.y" size="3"></td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
