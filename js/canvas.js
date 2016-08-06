@@ -1,19 +1,27 @@
+var CTX;
+
 var WIDTH;
 var HEIGHT;
 
 var MOUSE_X = undefined;
 var MOUSE_Y = undefined;
 
+var OFFSET;
+
 $(document).ready(function() {
   resize();
 
 	window.onresize = resize;
-	window.onmousemove = trackMouse;
+	window.addEventListener("mousemove", trackMouse);
+
+	window.addEventListener("mousedown", startRecord);
+	window.addEventListener("mousemove", record);
+	window.addEventListener("mouseup", stopRecord);
 });
 
 function trackMouse(e) {
-	MOUSE_X = e.clientX;
-	MOUSE_Y = e.clientY;
+	MOUSE_X = e.pageX - OFFSET.left;
+	MOUSE_Y = e.pageY - OFFSET.top;
 }
 
 function resize() {
@@ -28,6 +36,10 @@ function resize() {
 
   ctx.width = WIDTH;
   ctx.height = HEIGHT;
+
+  OFFSET = $("canvas").offset();
+
+  CTX = ctx;
 }
 
 function xx(percent) {
