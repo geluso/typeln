@@ -1,7 +1,5 @@
-var CTX;
-
-var WIDTH;
-var HEIGHT;
+var CANVAS, CTX;
+var WIDTH, HEIGHT;
 
 var MOUSE_X = undefined;
 var MOUSE_Y = undefined;
@@ -9,6 +7,11 @@ var MOUSE_Y = undefined;
 var OFFSET;
 
 $(document).ready(function() {
+  CANVAS = document.getElementById("canvas");
+  CTX = canvas.getContext("2d");
+
+  paper.setup(CANVAS);
+
   resize();
 
 	window.onresize = resize;
@@ -28,18 +31,14 @@ function resize() {
   WIDTH = $("#keyboard").width();
   HEIGHT = $("#keyboard").height(); 
 
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext("2d");
+  CANVAS.width = WIDTH;
+  CANVAS.height = HEIGHT;
 
-  canvas.width = WIDTH;
-  canvas.height = HEIGHT;
-
-  ctx.width = WIDTH;
-  ctx.height = HEIGHT;
+  CTX.width = WIDTH;
+  CTX.height = HEIGHT;
 
   OFFSET = $("canvas").offset();
 
-  CTX = ctx;
 }
 
 function xx(percent) {

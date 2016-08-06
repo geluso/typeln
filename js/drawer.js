@@ -6,15 +6,10 @@ function drawLine(points) {
 
   CTX.clearRect(0, 0, WIDTH, HEIGHT);
 
-  CTX.beginPath();
-  CTX.moveTo(points[0].x, points[0].y);
-  
-  _.each(points, function(point) {
-    CTX.lineTo(point.x, point.y);
-  });
+  var path = new paper.Path(points);
+  path.strokeColor = "red";
 
-  CTX.strokeStyle = "red";
-  CTX.stroke();
-
-  console.log("done drawing");
+  var smoothed = path.clone()
+  smoothed.strokeColor = "blue";
+  smoothed.flatten(.2);
 }
