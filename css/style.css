@@ -1,0 +1,39 @@
+body {
+	background-color: goldenrod;
+	font-family: monospace;
+}
+
+a {
+	color: #CC0000;
+}
+
+a:hover {
+	color: yellow;
+}
+
+a:visited {
+	color: #AA0000;
+}
+
+div {
+	background-color: white;
+	border: solid black 1px;
+  padding: 0;
+  margin: 1em;
+  position: relative;
+}
+
+.center {
+  text-align: center;
+}
+
+#canvas {
+  border: solid black 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#keyboard {
+  width: 100%;
+}
