@@ -1,17 +1,19 @@
-<html>
+<html ng-app="app">
   <head>
     <title></title>
     <link rel="icon" href="http://5tephen.com/img/cheeseplane.gif" type="image/gif"/>
     <link rel="stylesheet" href="css/style.css" />
     <script src="thirdjs/jquery.js" type="text/javascript"></script>
     <script src="thirdjs/lodash.js" type="text/javascript"></script>
+    <script src="thirdjs/angular.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/canvas.js" type="text/javascript"></script>
+    <script src="js/controller.js" type="text/javascript"></script>
   </head>
-  <body>
+  <body ng-controller="Controller">
     <h1 class="center">Heading</h1>
     <div>
-      <img id="keyboard" src="img/keyboard.png" />
+      <img id="keyboard" src="keyboard.png" />
       <canvas id="canvas"></canvas>
     </div>
   </body>
