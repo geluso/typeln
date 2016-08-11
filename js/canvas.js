@@ -54,6 +54,7 @@ function resize() {
 
   OFFSET = $("canvas").offset();
 
+  resizeMapping();
 }
 
 function percentX(value) {

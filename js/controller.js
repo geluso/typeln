@@ -38,15 +38,4 @@ app.controller('Controller', ['$scope', function($scope) {
     {key: 'n', top_left: new Point(364, 119)},
     {key: 'm', top_left: new Point(424, 119)},
   ];
-
-  $scope.$watch('mappings', function(newVal, oldVal) {
-    CTX.clearRect(0, 0, WIDTH, HEIGHT);
-
-    _.each(newVal, function(xy) {
-      width = mappingWidth;
-      height = mappingWidth;
-
-      CTX.strokeRect(xy.top_left.x, xy.top_left.y, width, height);
-    });
-  }, true);
 }]);

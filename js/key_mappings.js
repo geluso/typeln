@@ -33,6 +33,62 @@ var MAPPINGS = [
   {key: 'm', top_left: new Point(424, 119)},
 ];
 
+
+var RATIO_MAPPING_SIZE = 0.07396449704142012;
+var RATIO_MAPPINGS = [
+  {key: 'q', x: 0.0073964497041420114, y: 0.021551724137931036},
+  {key: 'w', x: 0.09763313609467456, y: 0.021551724137931036},
+  {key: 'e', x: 0.1878698224852071, y: 0.021551724137931036},
+  {key: 'r', x: 0.2781065088757396, y: 0.021551724137931036},
+  {key: 't', x: 0.3683431952662722, y: 0.021551724137931036},
+  {key: 'y', x: 0.45857988165680474, y: 0.021551724137931036},
+  {key: 'u', x: 0.5488165680473372, y: 0.021551724137931036},
+  {key: 'i', x: 0.6390532544378699, y: 0.021551724137931036},
+  {key: 'o', x: 0.7292899408284024, y: 0.021551724137931036},
+  {key: 'p', x: 0.8210059171597633, y: 0.021551724137931036},
+  {key: 'a', x: 0.04437869822485207, y: 0.27155172413793105},
+  {key: 's', x: 0.1346153846153846, y: 0.27155172413793105},
+  {key: 'd', x: 0.22485207100591717, y: 0.27155172413793105},
+  {key: 'f', x: 0.3150887573964497, y: 0.27155172413793105},
+  {key: 'g', x: 0.40384615384615385, y: 0.27155172413793105},
+  {key: 'h', x: 0.4940828402366864, y: 0.27155172413793105},
+  {key: 'j', x: 0.584319526627219, y: 0.27155172413793105},
+  {key: 'k', x: 0.6730769230769231, y: 0.27155172413793105},
+  {key: 'l', x: 0.7618343195266272, y: 0.27155172413793105},
+  {key: 'z', x: 0.09467455621301775, y: 0.5129310344827587},
+  {key: 'x', x: 0.1834319526627219, y: 0.5129310344827587},
+  {key: 'c', x: 0.27218934911242604, y: 0.5129310344827587},
+  {key: 'v', x: 0.3609467455621302, y: 0.5129310344827587},
+  {key: 'b', x: 0.44970414201183434, y: 0.5129310344827587},
+  {key: 'n', x: 0.5384615384615384, y: 0.5129310344827587},
+  {key: 'm', x: 0.6272189349112426, y: 0.5129310344827587}
+];
+
+function resizeMapping() {
+  MAPPING_WIDTH = xx(RATIO_MAPPING_SIZE);
+  MAPPINGS = _.map(RATIO_MAPPINGS, function(ratio) {
+    var x = xx(ratio.x);
+    var y = yy(ratio.y);
+    return {key: ratio.key, top_left: new Point(x, y)};
+  });
+
+  drawMapping();
+}
+
+function drawMapping() {
+  _.each(MAPPINGS, function(xy) {
+    CTX.strokeRect(xy.top_left.x, xy.top_left.y, MAPPING_WIDTH, MAPPING_WIDTH);
+  });
+}
+
+// deprecated. used once to convert hard coded values to ratio values.
+function convertMapping() {
+  _.each(MAPPINGS, function(mapping) {
+    var x = percentX(mapping.top_left.x);
+    var y = percentY(mapping.top_left.y);
+  });
+}
+
 function getKey(x, y) {
   return getMouseUnderKey(x, y);
 }
