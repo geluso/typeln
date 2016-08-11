@@ -5,14 +5,25 @@ function drawLine(points) {
 
   CTX.clearRect(0, 0, WIDTH, HEIGHT);
 
-  points = _.map(points, function(point) {
-    return new Point(xx(point.x), yy(point.y));
+  CTX.strokeColor = "green";
+  pointsXY = _.map(points, function(point) {
+    var x = xx(point.x);
+    var y = yy(point.y)
+
+    return new Point(x, y);
   });
 
-  var path = new paper.Path(points);
+  var path = new paper.Path(pointsXY);
   path.strokeColor = "red";
 
   var smoothed = path.clone()
   smoothed.strokeColor = "blue";
   smoothed.flatten(.2);
+
+  // set a timeout so the rects are drawn after the paper lib
+  setTimeout(function() {
+    _.each(pointsXY, function(point) {
+      CTX.strokeRect(point.x - 3, point.y - 3, 5, 5);
+    });
+  }, 0);
 }
