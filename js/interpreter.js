@@ -4,12 +4,23 @@ function CharCount(key) {
 }
 
 function interpret(points) {
-  if (points && points.length < 1) {
+  if (points == undefined || points.length < 1) {
     return "";
   }
 
-  var first = getKey(points[0].x, points[0].y);
-  var last = getKey(points[points.length - 1].x, points[points.length - 1].y);
+  var first, last, i;
+
+  i = 0;
+  while (first == undefined) {
+    first = getKey(points[i].x, points[i].y);
+    i++;
+  }
+
+  i = points.length - 1;
+  while (last == undefined) {
+    last = getKey(points[i].x, points[i].y);
+    i--;
+  }
 
   var counts = [];
   var current = first.key;
