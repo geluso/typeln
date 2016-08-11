@@ -1,3 +1,5 @@
+var HIT_BOX_THRESHOLD = 10;
+
 function CharCount(key) {
   this.key = key;
   this.count = 1;
@@ -38,10 +40,15 @@ function interpret(points) {
   });
 
   counts = _.filter(counts, function(count) {
-    return count.count > 10;
+    return count.count > HIT_BOX_THRESHOLD;
   });
 
-  return first.key + countArrayToStr(counts) + last.key;
+  var result = first.key + countArrayToStr(counts);
+  if (last.count < HIT_BOX_THRESHOLD) {
+    result += last.key;
+  }
+
+  return result;
 }
 
 function countArrayToStr(arr) {
