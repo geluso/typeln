@@ -26,6 +26,13 @@ function trackMouse(e) {
 	MOUSE_X = e.pageX - OFFSET.left;
 	MOUSE_Y = e.pageY - OFFSET.top;
 
+  var key = getMouseUnderKey(MOUSE_X, MOUSE_Y);
+  if (SHOW_KEY && key) {
+    CTX.clearRect(0, 0, WIDTH, HEIGHT);
+    CTX.fillStyle = 'green';
+    CTX.fillRect(key.top_left.x, key.top_left.y, MAPPING_WIDTH, MAPPING_WIDTH);
+  }
+
 	MOUSE_XX = percentX(MOUSE_X);
 	MOUSE_YY = percentY(MOUSE_Y);
 }
