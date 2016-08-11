@@ -26,4 +26,6 @@ function drawLine(points) {
       CTX.strokeRect(point.x - 3, point.y - 3, 5, 5);
     });
   }, 100);
+
+  return pointsXY;
 }

@@ -33,6 +33,10 @@ var MAPPINGS = [
   {key: 'm', top_left: new Point(424, 119)},
 ];
 
+function getKey(x, y) {
+  return getMouseUnderKey(x, y);
+}
+
 function getMouseUnderKey(x, y) {
   var key = _.find(MAPPINGS, function(mapping) {
     if (mapping.top_left.x < x &&

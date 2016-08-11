@@ -9,7 +9,11 @@ function startRecord() {
 
 function stopRecord() {
   RECORDING = false;
-  drawLine(POINTS);
+
+  var pointsXY = drawLine(POINTS);
+  var text = interpret(pointsXY);
+
+  document.getElementById("result").value = text;
 }
 
 function record() {
