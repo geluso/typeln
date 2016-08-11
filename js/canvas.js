@@ -20,6 +20,10 @@ $("#keyboard").ready(function() {
 	window.addEventListener("mousedown", startRecord);
 	window.addEventListener("mousemove", record);
 	window.addEventListener("mouseup", stopRecord);
+
+  document.getElementById("clear").addEventListener("click", function() {
+    CTX.clearRect(0, 0, WIDTH, HEIGHT);
+  });
 });
 
 function trackMouse(e) {
