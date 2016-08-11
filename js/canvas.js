@@ -22,6 +22,7 @@ $("#keyboard").ready(function() {
 	window.addEventListener("mouseup", stopRecord);
 
   document.getElementById("clear").addEventListener("click", function() {
+    document.getElementById("result").value = "";
     CTX.clearRect(0, 0, WIDTH, HEIGHT);
   });
 });
