@@ -19,6 +19,6 @@ function record() {
     return;
   }
 
-  console.log("recording", MOUSE_X, MOUSE_Y);
-  POINTS.push(new Point(MOUSE_X, MOUSE_Y));
+  console.log("recording", MOUSE_XX, MOUSE_YY);
+  POINTS.push(new Point(MOUSE_XX, MOUSE_YY));
 }
