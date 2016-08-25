@@ -49,11 +49,25 @@ function drawLine(points) {
   ];
   // Get the context of the canvas element we want to select
   
-  var xs = pointsXY.map(function(pt) {
+  var integral = [];
+  for (var i = 1; i < pointsXY.length; i++) {
+      var p1 = pointsXY[i - 1];
+      var p2 = pointsXY[i];
+
+      if (p1 && p2) {
+        var slope = (p2.y - p1.y) / (p2.x - p1.x);
+        var midX = p1.x + (p2.x - p1.x) / 2;
+        integral.push(new Point(midX, slope));
+      }
+  };
+
+  //var data = pointsXY;
+  var data = integral;
+  var xs = data.map(function(pt) {
     return pt.x;
   });
 
-  var ys = pointsXY.map(function(pt) {
+  var ys = data.map(function(pt) {
     return pt.y;
   });
 
