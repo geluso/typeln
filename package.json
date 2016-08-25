@@ -1,0 +1,11 @@
+{
+  "name": "typeln",
+  "scripts": {
+    "start": "node_modules/browser-sync/bin/browser-sync.js start --server . --files ."
+  },
+  "author": "Steve Geluso",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.12.5"
+  }
+}
