@@ -10,8 +10,6 @@ $("#keyboard").ready(function() {
   CANVAS = document.getElementById("canvas");
   CTX = canvas.getContext("2d");
 
-  paper.setup(CANVAS);
-
   resize();
 
 	window.onresize = resize;
@@ -48,6 +46,8 @@ function resize() {
 
   CANVAS.width = WIDTH;
   CANVAS.height = HEIGHT;
+  CANVAS.style.width = WIDTH + 'px';
+  CANVAS.style.height = HEIGHT + 'px';
 
   CTX.width = WIDTH;
   CTX.height = HEIGHT;
