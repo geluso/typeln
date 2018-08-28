@@ -3,6 +3,7 @@ var POINTS = [];
 
 
 function startRecord() {
+  CTX.clearRect(0, 0, WIDTH, HEIGHT);
   RECORDING = true;
   POINTS = [];
 }
