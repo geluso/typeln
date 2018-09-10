@@ -6,6 +6,7 @@ function drawLine(points) {
     return;
   }
 
+  console.log('cleared');
   CTX.clearRect(0, 0, WIDTH, HEIGHT);
 
   CTX.strokeColor = "green";
@@ -23,7 +24,6 @@ function drawLine(points) {
   var smoothed = path.clone()
   smoothed.strokeColor = "blue";
   smoothed.flatten(.2);
-
 
   if (DRAW_ALL_POINTS) {
     // set a timeout so the rects are drawn after the paper lib
@@ -100,7 +100,9 @@ function drawLine(points) {
     ]
   };
 
-  new Chart(chartCtx).Line(lineData);
+  //new Chart(chartCtx).Line(lineData);
+
+  drawMapping();
 
   return pointsXY;
 }

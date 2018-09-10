@@ -64,6 +64,12 @@ var RATIO_MAPPINGS = [
   {key: 'm', x: 0.6272189349112426, y: 0.5129310344827587}
 ];
 
+let LETTER_TO_POINT = RATIO_MAPPINGS.reduce((map, key) => {
+  map[key.key] = key;
+  return map;
+}, {});
+console.log('LETTER_TO_POINT', LETTER_TO_POINT);
+
 function resizeMapping() {
   MAPPING_WIDTH = xx(RATIO_MAPPING_SIZE);
   MAPPINGS = _.map(RATIO_MAPPINGS, function(ratio) {
@@ -78,6 +84,11 @@ function resizeMapping() {
 function drawMapping() {
   _.each(MAPPINGS, function(xy) {
     CTX.strokeRect(xy.top_left.x, xy.top_left.y, MAPPING_WIDTH, MAPPING_WIDTH);
+    CTX.fillStyle = "rgba(255,0,0,.1)";
+    if (Math.random() < .2) {
+      CTX.fillStyle = "rgba(0,255,0,.1)";
+    }
+    CTX.fillRect(xy.top_left.x, xy.top_left.y, MAPPING_WIDTH, MAPPING_WIDTH);
   });
 }
 
