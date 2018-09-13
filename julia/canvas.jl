@@ -1,3 +1,9 @@
+import JSON
+
+jj = JSON.parse(String(read("key_locations.json")))
+percent_width = get(jj, "percent_width", Float64) / 100.0
+locations = get(jj, "locations", [])
+
 using Gtk, Graphics
 c = @GtkCanvas()
 win = GtkWindow(c, "Canvas", 400, 200, resizable=true)
@@ -22,6 +28,20 @@ win = GtkWindow(c, "Canvas", 400, 200, resizable=true)
   rectangle(ctx, w/4, h/4, w/2, h/2)
   set_source_rgb(ctx, 0, 1, 0)
   stroke(ctx)
+
+  size = w * percent_width * 2
+  for key in locations
+    xx = get(key, "x", 0) * w
+    yy = get(key, "y", 0) * h
+
+    println(key)
+    println("xx: ", xx)
+    println("yy: ", yy)
+
+    rectangle(ctx, xx, yy, size, size)
+    set_source_rgb(ctx, 0, 0, 0)
+    stroke(ctx)
+  end
 end
 
 show(c)
