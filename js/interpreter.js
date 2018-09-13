@@ -52,8 +52,9 @@ function interpret(points) {
   }, []);
 
   let joined = reduced.map(key => key.key).join('');
-  if (BACK_TRACED[reduced]) {
+  if (BACK_TRACED[joined]) {
     console.log(joined, "hit");
+    return BACK_TRACED[joined];
   } else {
     console.log(joined, "miss");
   }
