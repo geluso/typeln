@@ -6,7 +6,7 @@ locations = get(jj, "locations", [])
 
 using Gtk, Graphics
 c = @GtkCanvas()
-win = GtkWindow(c, "Canvas", 400, 200, resizable=true)
+win = GtkWindow(c, "Canvas", 676, 232, resizable=true)
 @guarded draw(c) do widget
   ctx = getgc(c)
   h = height(c)
