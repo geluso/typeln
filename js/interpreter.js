@@ -59,6 +59,12 @@ function interpret(points) {
     console.log(joined, "miss");
   }
 
+  let min = minEditDistance(joined);
+  console.log("min edit distance", min);
+
+  let fuzzy = letterEndsFuzzy(joined);
+  console.log("fuzzy:", fuzzy);
+
   let letters = reduced.map(key => key.key).join("");
   counts = _.filter(counts, function(count) {
     return count.count > HIT_BOX_THRESHOLD;
@@ -76,4 +82,22 @@ function countArrayToStr(arr) {
   return arr.reduce(function(s1, s2) {
     return s1 + s2.key;
   }, "");
+}
+
+function minEditDistance(needle) {
+  let first = needle[0];
+  let last = needle[needle.length - 1];
+  let ends = LETTER_ENDS[first][last];
+
+  let min = 99;
+  let best = null;
+  for (word of ends) {
+    let result = editDistance.levenshtein(needle, word.back, insert, remove, update)
+    if (result.distance < min) {
+      min = result.distance;
+      best = word.english;
+    }
+  }
+  console.log("min:", min, "best:", best);
+  return best;
 }

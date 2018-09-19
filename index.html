@@ -11,6 +11,12 @@
     <script src="thirdjs/paper-full.js"></script>
     <script src="thirdjs/fuse.min.js"></script>
     <script src="thirdjs/Chart.js"></script>
+    <script>
+      var insert, remove, update;
+      insert = remove = function(node) { return 1; };
+      update = function(stringA, stringB) { return stringA !== stringB ? 1 : 0; };
+    </script>
+    <script src="thirdjs/edit-distance.js"></script>
 
     <script src="js/twl3.js"></script>
     <script src="js/point.js"></script>

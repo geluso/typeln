@@ -25,8 +25,10 @@ function generate_dict()
     first_letter = first(backtraced)
     last_letter = last(backtraced)
     
-    # LETTER_ENDS[first_letter][last_letter].push(english)
-    println("LETTER_ENDS['",first_letter,"']['",last_letter,"'].push('",english,"')")
+    # obj = {back: backtraced, english: english}
+    # LETTER_ENDS[first_letter][last_letter].push(obj)
+    println("obj = {back: '",backtraced,"', english: '",english,"'}")
+    println("LETTER_ENDS['",first_letter,"']['",last_letter,"'].push(obj)")
   end
 end
 
