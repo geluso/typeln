@@ -25,4 +25,5 @@ function record() {
   }
 
   POINTS.push(new Point(MOUSE_XX, MOUSE_YY));
+  drawLine(POINTS);
 }
