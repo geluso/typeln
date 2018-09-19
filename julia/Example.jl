@@ -1,3 +1,7 @@
 function hello(str)
-  println("yes yes yes")
+  println("Hello ", str)
+end
+
+function hi()
+  println("lose")
 end
