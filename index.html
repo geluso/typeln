@@ -1,4 +1,4 @@
-<html ng-app="app">
+<html>
   <head>
     <title></title>
     <link rel="icon" href="http://5tephen.com/img/cheeseplane.gif"/>
@@ -6,7 +6,6 @@
 
     <script src="thirdjs/jquery.js"></script>
     <script src="thirdjs/lodash.js"></script>
-    <script src="thirdjs/angular.js"></script>
     <script src="thirdjs/paper-core.js"></script>
     <script src="thirdjs/paper-full.js"></script>
     <script src="thirdjs/fuse.min.js"></script>
@@ -26,7 +25,6 @@
     <script src="js/main.js"></script>
     <script src="js/recorder.js"></script>
     <script src="js/canvas.js"></script>
-    <script src="js/controller.js"></script>
     <script src="js/drawer.js"></script>
     <script src="js/interpreter.js"></script>
     <script src="js/interpolate.js"></script>
@@ -37,11 +35,11 @@
     <script src="js/words/letter_ends.js"></script>
     <script src="js/init-fuzzy-search.js"></script>
   </head>
-  <body ng-controller="Controller">
+  <body>
     <h1 class="center">typeln</h1>
 
     <button id="clear">clear</button>
-    <input id="result" ng-model="text">
+    <input id="result">
     <button id="tiger">tiger</button>
 
     <div>
