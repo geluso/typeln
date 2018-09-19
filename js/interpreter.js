@@ -52,30 +52,10 @@ function interpret(points) {
   }, []);
 
   let joined = reduced.map(key => key.key).join('');
-  if (BACK_TRACED[joined]) {
-    console.log(joined, "hit");
-    return BACK_TRACED[joined];
-  } else {
-    console.log(joined, "miss");
-  }
+  console.log("covered", joined);
 
   let min = minEditDistance(joined);
-  console.log("min edit distance", min);
-
-  let fuzzy = letterEndsFuzzy(joined);
-  console.log("fuzzy:", fuzzy);
-
-  let letters = reduced.map(key => key.key).join("");
-  counts = _.filter(counts, function(count) {
-    return count.count > HIT_BOX_THRESHOLD;
-  });
-
-  var result = countArrayToStr(counts);
-  if (last.count < HIT_BOX_THRESHOLD) {
-    result += last.key;
-  }
-
-  return result;
+  return min;
 }
 
 function countArrayToStr(arr) {
@@ -91,13 +71,20 @@ function minEditDistance(needle) {
 
   let min = 99;
   let best = null;
+  let options = [];
+
   for (word of ends) {
     let result = editDistance.levenshtein(needle, word.back, insert, remove, update)
     if (result.distance < min) {
       min = result.distance;
-      best = word.english;
+      best = BACK_TRACED2[word.back];
+    }
+
+    if (result.distance < 5) {
+      options.push(BACK_TRACED2[word.back]);
     }
   }
+  console.log("options:", options);
   console.log("min:", min, "best:", best);
   return best;
 }

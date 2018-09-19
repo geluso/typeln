@@ -16,8 +16,6 @@ function stopRecord() {
 function initInterpret() {
   var pointsXY = drawLine(POINTS);
   var text = interpret(pointsXY);
-  console.log('traced', text);
-
   document.getElementById("result").value = text;
 }
 

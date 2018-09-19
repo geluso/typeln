@@ -40,70 +40,7 @@ function drawLine(points) {
 
   }
 
-  // create a chart of line slopes
-  var chartCtx = document.getElementById("myChart").getContext("2d");
-  var pieData = [
-      {
-          value: 20,
-          color:"#878BB6"
-      },
-      {
-          value : 40,
-          color : "#4ACAB4"
-      },
-      {
-          value : 10,
-          color : "#FF8153"
-      },
-      {
-          value : 30,
-          color : "#FFEA88"
-      }
-  ];
-  // Get the context of the canvas element we want to select
-  
-  var integral = [];
-  for (var i = 1; i < pointsXY.length; i++) {
-      var p1 = pointsXY[i - 1];
-      var p2 = pointsXY[i];
-
-      if (p1 && p2) {
-        var slope = (p2.y - p1.y) / (p2.x - p1.x);
-        var midX = p1.x + (p2.x - p1.x) / 2;
-        integral.push(new Point(midX, slope));
-      }
-  };
-
-  //var data = pointsXY;
-  var data = integral;
-  var xs = data.map(function(pt) {
-    return pt.x;
-  });
-
-  var ys = data.map(function(pt) {
-    return pt.y;
-  });
-
-  var lineData = {
-    labels: ys,
-    datasets: [
-        {
-            label: "Sodium intake",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: xs
-        }
-    ]
-  };
-
-  //new Chart(chartCtx).Line(lineData);
-
   drawMapping();
-
   return pointsXY;
 }
 
