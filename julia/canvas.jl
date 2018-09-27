@@ -1,4 +1,5 @@
 using Revise
+using Cairo
 
 is_reporting_state = false
 is_pressing = false
@@ -117,6 +118,12 @@ function do_draw(c)
   for key in locations
     xx = get(key, "x", 0) * w
     yy = get(key, "y", 0) * h
+
+    move_to(ctx, xx + size / 2, yy + size / 2)
+    letter = get(key, "key", "a")
+    show_text(ctx, letter)
+
+    println(letter, xx, yy)
 
     rectangle(ctx, xx, yy, size, size)
     set_source_rgb(ctx, 0, 0, 0)
