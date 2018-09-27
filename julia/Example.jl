@@ -1,5 +1,5 @@
 function hello(str)
-  println("Hello ", str)
+  println("Goodbye ", str)
 end
 
 function hi()

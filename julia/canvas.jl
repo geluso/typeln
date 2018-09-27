@@ -1,3 +1,5 @@
+using Revise
+
 is_pressing = false
 x_down = -1
 y_down = -1
@@ -19,13 +21,20 @@ function init_canvas()
     global x_down = event.x
     global y_down = event.y
     report_state("press")
+    @guarded draw(c) do widget
+      Revise.revise()
+      Base.invokelatest(do_draw, c)
+    end
   end
 
   c.mouse.motion = @guarded (widget, event) -> begin
-    println(typeof(event.x))
     global x_pos = event.x
     global y_pos = event.y
     report_state("move")
+    @guarded draw(c) do widget
+      Revise.revise()
+      Base.invokelatest(do_draw, c)
+    end
   end
 
   c.mouse.button1release = @guarded (widget, event) -> begin
@@ -33,17 +42,30 @@ function init_canvas()
     global x_down = event.x
     global y_down = event.y
     report_state("release")
+    @guarded draw(c) do widget
+      Revise.revise()
+      Base.invokelatest(do_draw, c)
+    end
   end
 
   @guarded draw(c) do widget
-    do_draw(c)
+      Revise.revise()
+      Base.invokelatest(do_draw, c)
   end
 
   return [c, win]
 end
 
 function getr()
-  return .5
+  return .0
+end
+
+function getg()
+  return .8
+end
+
+function getb()
+  return .0
 end
 
 function do_draw(c)
@@ -52,9 +74,13 @@ function do_draw(c)
   w = width(c)
 
   println(h, "x", w)
-
   rectangle(ctx, 0, 0, w, h)
-  set_source_rgb(ctx, getr(), getr(), getr())
+
+  Revise.revise()
+  r = Base.invokelatest(getr)
+  g = Base.invokelatest(getg)
+  b = Base.invokelatest(getb)
+  set_source_rgb(ctx, r, g, b)
   fill(ctx)
 
   aa = get_locations()
@@ -65,10 +91,6 @@ function do_draw(c)
   for key in locations
     xx = get(key, "x", 0) * w
     yy = get(key, "y", 0) * h
-
-    println(key)
-    println("xx: ", xx)
-    println("yy: ", yy)
 
     rectangle(ctx, xx, yy, size, size)
     set_source_rgb(ctx, 0, 0, 0)
